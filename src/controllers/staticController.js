@@ -5,6 +5,10 @@ module.exports = {
 
 	marco(req, res, next) {
 		res.render('static/marco', { body: 'polo' });
-	}
+	},
+
+  about(req, res, next) {
+    res.render('static/partials/about', { h1: 'About Us' });
+  }
 
 };
