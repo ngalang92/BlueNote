@@ -20,8 +20,6 @@ const passport = require("passport");
         req.flash("error", err);
         res.redirect("/users/sign_up");
       } else {
-
-// #3
         passport.authenticate("local")(req, res, () => {
           req.flash("notice", "You've successfully signed in!");
           res.redirect("/");
@@ -50,6 +48,19 @@ const passport = require("passport");
     req.logout();
     req.flash("notice", "You've successfully signed out!");
     res.redirect("/");
-  }, //end signOut  
+  }, //end signOut
+
+  show(req, res, next){
+
+    userQueries.getUser(req.params.id, (err, result) => {
+
+      if(err || result.user === undefined){
+        req.flash("notice", "No user found with that ID.");
+        res.redirect("/");
+      } else {
+        res.render("users/show", {...result});
+      }
+    });
+  },
 
 }
