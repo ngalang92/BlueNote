@@ -6,6 +6,7 @@ module.exports = {
     const postRoutes = require("../routes/posts");
     const userRoutes = require("../routes/users");
     const flairRoutes = require("../routes/flair");
+    const commentRoutes = require("../routes/comments");
 
     if(process.env.NODE_ENV === "test") {
       const mockAuth = require("../../spec/support/mock-auth.js");
@@ -18,6 +19,7 @@ module.exports = {
     app.use(postRoutes);
     app.use(userRoutes);
     app.use(flairRoutes);
+    app.use(commentRoutes);
 
   }
 }
