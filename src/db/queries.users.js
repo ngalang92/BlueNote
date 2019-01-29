@@ -24,6 +24,7 @@ module.exports = {
     })
   },
 
+
   getUser(id, callback){
  // #1
     let result = {};
@@ -59,11 +60,11 @@ module.exports = {
               })
               .catch((err) => {
                 callback(err);
-              })            
+              })
           })
         })
-      }
-    })
-  }
-
+      })
+     }
+   })
+ }
 }
