@@ -1,5 +1,7 @@
 const Flair = require("./models").Flair;
 const Topic = require("./models").Topic;
+const Authorizer = require("../policies/flair")
+
  module.exports = {
   addFlair(newFlair, callback){
       return Flair.create(newFlair)
@@ -31,10 +33,10 @@ const Topic = require("./models").Topic;
      })
   },
   updateFlair(id, updatedFlair, callback){
-     return Flair.findById(id)
+    return Flair.findById(id)
      .then((flair) => {
-       if(!flair){
-         return callback("Flair not found");
+       if (!flair) {
+         return callback("flair not found");
        }
        flair.update(updatedFlair, {
          fields: Object.keys(updatedFlair)
@@ -45,6 +47,9 @@ const Topic = require("./models").Topic;
        .catch((err) => {
          callback(err);
        });
-     });
-  },
+    })
+    .catch((err) => {
+      callback(err);
+    });
+  }, //end update
 }

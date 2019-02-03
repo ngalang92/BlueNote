@@ -3,21 +3,17 @@ const Authorizer = require("../policies/comment.js");
 
 module.exports = {
   create(req, res, next){
- // #2
     const authorized = new Authorizer(req.user).create();
 
     if(authorized) {
 
- // #3
       let newComment = {
         body: req.body.body,
         userId: req.user.id,
         postId: req.params.postId
       };
 
- // #4
       commentQueries.createComment(newComment, (err, comment) => {
- // #5
         if(err){
           req.flash("error", err);
         }
@@ -29,13 +25,14 @@ module.exports = {
     }
   },
 
-// #6
   destroy(req, res, next){
     commentQueries.deleteComment(req, (err, comment) => {
       if(err){
         res.redirect(err, req.headers.referer);
       } else {
-        res.redirect(req.headers.referer);
+        //console.log(req);
+        req.flash("notice", "You've successfully deleted your comment, please refresh the page!");
+        res.redirect(303, `/topics/${req.params.topicId}/posts/${req.params.postId}`);
       }
     });
   }

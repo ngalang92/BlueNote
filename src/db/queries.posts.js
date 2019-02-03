@@ -24,7 +24,7 @@ module.exports = {
         {model: Comment, as: "comments", include: [
           {model: User }
         ]}, {model: Vote, as: "votes"},
-              {model: Favorite, as: "favorites"}        
+              {model: Favorite, as: "favorites"}
       ]
     })
     .then((post) => {
@@ -36,6 +36,7 @@ module.exports = {
   }, //end getPost
 
   deletePost(id, callback){
+    console.log(id);
     return Post.destroy({
       where: {id}
     })

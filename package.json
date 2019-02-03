@@ -1,5 +1,5 @@
 {
-  "name": "bloccit",
+  "name": "BlueNote",
   "version": "1.0.0",
   "description": "A Reddit-like application for users to dicuss and share content",
   "main": "src/server.js",
@@ -7,8 +7,16 @@
     "test": "export NODE_ENV=test && jasmine",
     "start": "node src/server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngalangSF/BlueNote.git"
+  },
+  "author": "Nick Galang",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngalangSF/BlueNote/issues"
+  },
+  "homepage": "https://github.com/ngalangSF/BlueNote#readme",
   "devDependencies": {
     "faker": "^4.1.0",
     "jasmine": "^3.2.0",
@@ -23,6 +31,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.0.2",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",

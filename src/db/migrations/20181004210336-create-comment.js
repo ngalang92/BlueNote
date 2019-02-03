@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },      
       postId: {
         type: Sequelize.INTEGER,
         onDelete: "CASCADE",

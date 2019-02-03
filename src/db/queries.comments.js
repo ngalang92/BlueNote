@@ -1,12 +1,11 @@
 const Comment = require("./models").Comment;
 const Post = require("./models").Post;
+const Topic = require("./models").Topic;
 const User = require("./models").User;
-
 const Authorizer = require("../policies/comment");
 
 module.exports = {
 
- // #2
   createComment(newComment, callback){
     return Comment.create(newComment)
     .then((comment) => {
@@ -17,7 +16,6 @@ module.exports = {
     });
   },
 
- // #3
   deleteComment(req, callback){
     return Comment.findById(req.params.id)
     .then((comment) => {

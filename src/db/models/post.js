@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
   var Post = sequelize.define("Post", {
 
-//#1
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -12,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
 
-//#2
     topicId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -24,9 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Post.associate = function(models) {
-    // associations can be defined here
 
-//#3
     Post.belongsTo(models.Topic, {
       foreignKey: "topicId",
       onDelete: "CASCADE"
@@ -71,10 +67,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Post.prototype.getPoints = function(){
 
-// #1
     if(this.votes.length === 0) return 0
 
-// #2
     return this.votes
       .map((v) => { return v.value })
       .reduce((prev, next) => { return prev + next });
@@ -92,10 +86,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Post.addScope("lastFiveFor", (userId) => {
-// #2
     return {
       where: { userId: userId},
-// #3
       limit: 5,
       order: [["createdAt", "DESC"]]
     }

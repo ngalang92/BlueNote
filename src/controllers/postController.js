@@ -52,6 +52,7 @@ module.exports = {
 
   show(req, res, next){
     postQueries.getPost(req.params.id, (err, post) => {
+      console.log(err);
       if(err || post == null){
         res.redirect(404, "/");
       } else {
@@ -61,6 +62,7 @@ module.exports = {
   }, //end show
 
   destroy(req, res, next){
+    console.log(req.params.id);
     const authorized = new Authorizer(req.user).destroy();
      if (authorized) {
        postQueries.deletePost(req.params.id, (err, post) => {

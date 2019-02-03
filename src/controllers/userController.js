@@ -8,13 +8,13 @@ const passport = require("passport");
 
 
   create(req, res, next){
-//#1
+
     let newUser = {
       email: req.body.email,
       password: req.body.password,
       passwordConfirmation: req.body.passwordConfirmation
     };
-// #2
+
     userQueries.createUser(newUser, (err, user) => {
       if(err){
         req.flash("error", err);
@@ -51,7 +51,7 @@ const passport = require("passport");
   }, //end signOut
 
   show(req, res, next){
-
+//console.log(res.locals);
     userQueries.getUser(req.params.id, (err, result) => {
 
       if(err || result.user === undefined){
@@ -62,22 +62,5 @@ const passport = require("passport");
       }
     });
   },
-
-  show(req, res, next){
-
-   // #1
-    userQueries.getUser(req.params.id, (err, result) => {
-
-   // #2
-      if(err || result.user === undefined){
-        req.flash("notice", "No user found with that ID.");
-        res.redirect("/");
-      } else {
-
-   // #3
-        res.render("users/show", {...result});
-      }
-    });
-  }
 
 }
