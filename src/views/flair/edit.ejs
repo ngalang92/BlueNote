@@ -16,7 +16,8 @@
           <label for="color">Flair color</label>
           <textarea rows="4" class="form-control" name="color" placeholder="Enter Color"><%= flair.color %></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/topics/<%= flair.topicId %>/flair/<%= flair.id %>" class="btn btn-primary">Cancel</a>
+        <button type="submit" class="btn btn-success">Update</button>
       </form>
     </main>
      <% include ../static/partials/baseScripts.ejs %>

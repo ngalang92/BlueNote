@@ -35,6 +35,7 @@ module.exports = {
     })
   }, //end getPost
 
+
   deletePost(id, callback){
     console.log(id);
     return Post.destroy({
@@ -47,6 +48,33 @@ module.exports = {
       callback(err);
     })
   },
+/*
+deletePost(id, callback){
+  return Post.findById(required.params.id)
+  .then((post) => {
+      post.destroy()
+      .then((res) => {
+        callback(null, post);
+      });
+  })
+  .catch((err) => {
+    callback(err);
+  });
+},
+
+
+deletePost(id, callback){
+  return Post.destroy({
+    where: { id }
+  })
+  .then((deletedRecordsCount) => {
+    callback(null, deletedRecordsCount);
+  })
+  .catch((err) => {
+    callback(err);
+  })
+},
+*/
   updatePost(id, updatedPost, callback){
     return Post.findById(id)
      .then((post) => {

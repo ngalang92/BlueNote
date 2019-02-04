@@ -19,7 +19,8 @@
           <label for="description">Description</label>
           <textarea rows="4" class="form-control" name="description" placeholder="Enter Description"><%= topic.description %></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+         <a href="/topics/<%= topic.id %>" class="btn btn-primary">Cancel</a>
+        <button type="submit" class="btn btn-success">Update</button>
       </form>
     </main>
 
