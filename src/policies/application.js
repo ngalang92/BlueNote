@@ -8,6 +8,7 @@ module.exports = class ApplicationPolicy {
 
 
   _isOwner() {
+    //console.log(this.dataValues);
     return this.record && (this.record.userId == this.user.id);
   }
 

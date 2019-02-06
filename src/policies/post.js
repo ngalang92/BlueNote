@@ -7,12 +7,12 @@ const ApplicationPolicy = require("./application");
     return (this._isAdmin() || this._isMember());
   }
    edit() {
-    return (this._isAdmin() || this._isOwner());
+    return ( this._isMember() || this._isAdmin());
   }
    update() {
     return this.edit();
   }
    destroy() {
-    return (this._isAdmin() || this._isOwner());
+    return (this._isMember() || this._isAdmin());
   }
  }

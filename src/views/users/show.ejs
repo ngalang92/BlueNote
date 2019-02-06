@@ -50,7 +50,7 @@
           <% }) %>
         <% } %>
       </ul>
-  
+
       <h2> Favorites </h2>
        <ul class="list-unstyled">
         <% if(favorites) { %>
@@ -58,6 +58,7 @@
             <li>
               <span>Post: </span><a href="/topics/<%= favorite.Post.topicId %>/posts/<%= favorite.Post.id %>">
                 <%= favorite.Post.title %>
+                <%= favorite.Post.createdAt %>
               </a>
             </li>
             <hr>

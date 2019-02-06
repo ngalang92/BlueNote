@@ -12,10 +12,17 @@ Copy and paste the contents of .env.sample file into .env file.
 
 Configure the SQL database by running this in your command line terminal:
 
+createdb BlueNote-dev
+
 sequelize db:migrate
 
 If desired, you may also seed the database by running the following:
 
 sequelize db:seed:all
 
-Then, run "npm start"
+Otherwise, you can use the app as an admin by completing the sign up page and then running the following:
+
+psql BlueNote-dev
+UPDATE "Users" SET role = 'admin' WHERE id = 1;
+
+Finally, run "npm start"
